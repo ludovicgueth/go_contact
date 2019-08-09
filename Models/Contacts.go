@@ -4,11 +4,12 @@ import (
 	"fmt"
 
 	"api/Config"
+
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 func GetAllContact(b *[]Contact) (err error) {
-	if err = Config.DB.Table("contacts").Select("firstname, lastname").Find(b).Error; err != nil {
+	if err = Config.DB.Select("id, first_name, last_name").Find(&b).Error; err != nil {
 		return err
 	}
 	return nil

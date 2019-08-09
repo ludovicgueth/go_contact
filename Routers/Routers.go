@@ -17,7 +17,7 @@ func SetupRouter() *gin.Engine {
 		v1.PUT("contact/:id", Controllers.PutOneContact)
 		v1.DELETE("contact/:id", Controllers.DeleteContact)
 
-		v1.POST("contact/:id/phoneNumber", Controllers.AddNewPhoneNumber)
+		v1.POST("phoneNumber", Controllers.AddNewPhoneNumber)
 		v1.DELETE("phoneNumber/:id", Controllers.DeletePhoneNumber)
 		}
 

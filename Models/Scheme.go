@@ -6,9 +6,9 @@ import (
 
 type Contact struct {
 	gorm.Model
-	FirstName    string
-	LastName     string
-	PhoneNumbers []PhoneNumber
+	FirstName    string        `gorm:"not null"`
+	LastName     string        `gorm:"not null"`
+	PhoneNumbers []PhoneNumber `gorm:"foreignkey:ContactId"`
 }
 
 type PhoneNumber struct {
@@ -16,12 +16,4 @@ type PhoneNumber struct {
 	Number    string
 	Name      string
 	ContactId uint
-}
-
-func (c *Contact) TableName() string {
-	return "contact"
-}
-
-func (p *PhoneNumber) TableName() string {
-	return "phoneNumber"
 }

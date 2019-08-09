@@ -3,15 +3,13 @@ package Controllers
 import (
 	"api/ApiHelpers"
 	"api/Models"
-	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
 func ListContact(c *gin.Context) {
-	// ONLY FIRSTNAME LASTNAME
 	var contact []Models.Contact
 	err := Models.GetAllContact(&contact)
-	fmt.Printf("%+v\n", contact)
 	if err != nil {
 		ApiHelpers.RespondJSON(c, 404, contact)
 	} else {
@@ -22,6 +20,14 @@ func ListContact(c *gin.Context) {
 func AddNewContact(c *gin.Context) {
 	var contact Models.Contact
 	c.BindJSON(&contact)
+	if contact.FirstName == "" {
+		ApiHelpers.RespondJSON(c, 404, contact)
+		return
+	}
+	if contact.LastName == "" {
+		ApiHelpers.RespondJSON(c, 404, contact)
+		return
+	}
 	err := Models.AddNewContact(&contact)
 	if err != nil {
 		ApiHelpers.RespondJSON(c, 404, contact)
