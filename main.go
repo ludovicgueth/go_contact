@@ -12,7 +12,6 @@ import (
 var err error
 
 func main() {
-	// HOST:DB avec docker
 	Config.DB, err = gorm.Open("postgres", "host=db port=5432 user=user dbname=db password=password sslmode=disable")
 
 	if err != nil {
