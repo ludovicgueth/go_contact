@@ -43,6 +43,9 @@ func GetOneContact(c *gin.Context) {
 	if err != nil {
 		ApiHelpers.RespondJSON(c, 404, contact)
 	} else {
+		var phoneNumbers []Models.PhoneNumber
+		Models.GetPhoneNumbersFromContact(&phoneNumbers, id)
+		contact.PhoneNumbers = phoneNumbers
 		ApiHelpers.RespondJSON(c, 200, contact)
 	}
 }

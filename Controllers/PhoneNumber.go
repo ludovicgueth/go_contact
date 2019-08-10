@@ -6,10 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
 func AddNewPhoneNumber(c *gin.Context) {
 	var phoneNumber Models.PhoneNumber
 	c.BindJSON(&phoneNumber)
-	err := Models.AddNewPhoneNumber(&phoneNumber)
+	err := Models.AddNewPhoneNumberToContact(&phoneNumber)
 	if err != nil {
 		ApiHelpers.RespondJSON(c, 404, phoneNumber)
 	} else {
