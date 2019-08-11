@@ -4,6 +4,8 @@
 
 Run the api and the database with docker 
 ```
+    $ git clone https://github.com/ludovicgueth/go_contact.git
+    $ cd go_contact
     $ docker-compose run -d
 ```
 
